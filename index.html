@@ -15,6 +15,23 @@
   </style>
 </head>
 
+<script>
+  // Get all iframes
+  const iframes = document.querySelectorAll('.video-iframe');
+
+  // Listen for focus event on each iframe
+  iframes.forEach((iframe, idx) => {
+    iframe.addEventListener('focus', () => {
+      iframes.forEach((otherIframe, otherIdx) => {
+        if (otherIdx !== idx) {
+          // Send pause command to other iframes
+          otherIframe.contentWindow.postMessage('pause', '*');
+        }
+      });
+    });
+  });
+</script>
+
 <body>
 
   <nav class="navbar navbar-expand-md bg-body-tertiary">
@@ -59,17 +76,17 @@
   <div class="row mt-4 g-4 justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="ratio ratio-16x9">
-        <iframe src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
+        <iframe class="video-iframe" src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="ratio ratio-16x9">
-        <iframe src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
+        <iframe class="video-iframe" src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="ratio ratio-16x9">
-        <iframe src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
+        <iframe class="video-iframe" src="https://clickv.ie/w/uC_2" allowfullscreen allow="autoplay"></iframe>
       </div>
     </div>
   </div>
