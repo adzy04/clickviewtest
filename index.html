@@ -16,16 +16,13 @@
 </head>
 
 <script>
-  // Get all iframes
   const iframes = document.querySelectorAll('.video-iframe');
-
-  // Listen for focus event on each iframe
   iframes.forEach((iframe, idx) => {
     iframe.addEventListener('focus', () => {
       iframes.forEach((otherIframe, otherIdx) => {
         if (otherIdx !== idx) {
-          // Send pause command to other iframes
-          otherIframe.contentWindow.postMessage('pause', '*');
+          // Reload the other iframe to stop playback
+          otherIframe.src = otherIframe.src;
         }
       });
     });
